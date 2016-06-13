@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+        <meta charset="utf-8">
+        <title>PLaying with the DOM</title>
+    </head>
+    <body>
+        <h1 id="main-heading">Hello world!</h1>
+        <script type="text/javascript">
+            // var headingElement = document.getElementById("main-heading");
+            // console.log(headingElement.innerHTML);
+            var newHeadingText = prompt("please provide a new heading");
+            // headingElement.innerHTML = newHeadingText;
+            $("#main-heading").text(newHeadingText);
+            $('body').append("<p> This is a new paragraph</p>");
+            $('body').append('<ul>');
+            for (var i = 0; i < 3; i++) {
+                var hobby = prompt("Tell me one of your hobbies!");
+                $('body').append('<li><p>' + hobby + '</p></li>');
+            }
+            $('body').append('</ul>');
+            $('h1').fadeOut(3000).fadeIn(2000);
+            $('h1').slideUp(1000).slideDown(1000);
+            $("h1").fadeTo(2000, 0.5);
+
+            var timeUp = function () {
+                alert('Time\'s up!');
+            };
+            timeoutId = setTimeout(timeUp, 3000);
+            clearTimeout(timeoutId);
+        </script>
+    </body>
+</html>

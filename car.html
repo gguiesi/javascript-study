@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Cars</title>
+        <!-- <script src="js/car.js" charset="utf-8"></script> -->
+    </head>
+    <body>
+        <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+
+        <script type="text/javascript">
+            var Car = function (x, y) {
+                this.x = x;
+                this.y = y;
+                this.move = 5;
+                this.draw();
+            };
+
+            Car.prototype.draw = function () {
+                var carHtml = '<img src="http://nostarch.com/images/car.png">';
+                this.carElement = $(carHtml);
+                this.carElement.css({
+                    position: "absolute",
+                    left: this.x,
+                    top: this.y
+                });
+                $("body").append(this.carElement);
+            };
+
+            Car.prototype.moveRight = function () {
+                this.x += this.move;
+                console.log(this.carElement);
+                this.carElement.offset({left: this.x});
+                // this.carElement.css({
+                //     // position: "absolute",
+                //     left: this.x,
+                //     top: this.y
+                // });
+            };
+
+            Car.prototype.moveRight = function () {
+                this.x += this.move;
+                this.carElement.css({
+                    left: this.x,
+                    top: this.y
+                });
+            };
+
+            Car.prototype.moveUp = function () {
+                this.y -= this.move;
+                this.carElement.css({
+                    left: this.x,
+                    top: this.y
+                });
+                console.log(this);
+            };
+            Car.prototype.moveDown = function () {
+                this.y += this.move;
+                this.carElement.css({
+                    left: this.x,
+                    top: this.y
+                });
+                console.log(this);
+            };
+
+            var tesla = new Car(20, 20);
+            var nissan = new Car(100, 200);
+            // tesla.draw();
+            // nissan.draw();
+
+            setInterval(tesla.moveRight(), 1000);
+            setInterval(tesla.moveRight(), 2000);
+            setInterval(tesla.moveRight(), 3000);
+            setInterval(tesla.moveRight(), 4000);
+            setInterval(tesla.moveRight(), 5000);
+            setInterval(tesla.moveRight(), 6000);
+        </script>
+    </body>
+</html>

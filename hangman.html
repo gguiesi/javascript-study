@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hangman!</title>
+</head>
+<body>
+    <h1>Hangman!</h1>
+    <script type="text/javascript">
+        var getSecretWord = function () {
+            var alphabet = "abcdefghijklmnopqrstuvwxyz";
+            var secretWord = '';
+            for (var i = 0; i < 6; i++) {
+                secretWord += alphabet[Math.floor(Math.random() * alphabet.length)];
+            }
+            return secretWord;
+        };
+
+        var substituteNewLetter = function (s, secretWord, l) {
+            for (var i = 0; i < secretWord.length; i++) {
+                if (secretWord[i] === l) {
+                    s[i] = l;
+                }
+            }
+            return s
+        };
+
+        secretWord = getSecretWord();
+        console.log(secretWord);
+        var s = ['_','_','_','_','_','_'];
+        // while (s != secretWord ) {
+        while (s.join('') !== secretWord) {
+            var l = prompt("diga uma letra para descobrir a palavra " + s.join(''));
+            var i = secretWord.indexOf(l);
+            if (l === null) {
+                break;
+            }
+            s = substituteNewLetter(s, secretWord, l.toLowerCase());
+        }
+        alert('Fim de jogo. Palavra ' + secretWord);
+    </script>
+</body>
+</html>

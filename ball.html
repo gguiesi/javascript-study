@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>A Bouncing Ball</title>
+        <script src="js/ball.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <canvas id="canvas" width="400" height="400"></canvas>
+        <script type="text/javascript">
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+
+            var balls = [];
+
+            var randomPosition = function (radius, border) {
+                v = Math.floor(Math.random() * border);
+                if (v < radius) {
+                    v = radius;
+                } else if (v > (border - radius)) {
+                    v = border - radius;
+                }
+                return v;
+            };
+
+            for (var i = 0; i < 20; i++) {
+                var radius = Math.ceil(Math.random() * 10) + 2;
+                var x = randomPosition(radius, canvas.width);
+                var y = randomPosition(radius, canvas.height);
+
+                var ball = new Ball(x, y, radius);
+                balls[i] = ball;
+            }
+
+            var animateBall = function () {
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+
+                for (var i = 0; i < balls.length; i++) {
+                    var ball = balls[i];
+                    // console.log(i + '-' + ball.color);
+                    ball.draw();
+                    ball.move();
+                    ball.checkCollision();
+                    // console.log(i + '-' + ball.color);
+                }
+
+                ctx.strokeRect(0,0,canvas.width,canvas.height);
+            };
+
+            setInterval(animateBall, 30);
+        </script>
+    </body>
+</html>
