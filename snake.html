@@ -5,7 +5,7 @@
         <title>Snake!</title>
     </head>
     <body>
-        <canvas id="canvas" width="400" height="400"></canvas>
+        <canvas id="canvas" width="800" height="800"></canvas>
 
         <script src="https://code.jquery.com/jquery-2.1.0.js" charset="utf-8"></script>
         <script src="js/snake.js" charset="utf-8"></script>
@@ -18,7 +18,7 @@
             var width = canvas.width;
             var height = canvas.height;
             // Work out the width and height in blocks
-            var blockSize = 10;
+            var blockSize = Math.round(width * 0.025);
             var widthInBlocks = width / blockSize;
             var heightInBlocks = height / blockSize;
             // Set score to 0
