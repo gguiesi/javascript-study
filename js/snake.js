@@ -5,7 +5,26 @@ var drawBorder = function () {
     ctx.fillRect(0, height - blockSize, width, blockSize);
     ctx.fillRect(0, 0, blockSize, height);
     ctx.fillRect(width - blockSize, 0, blockSize, height);
+    drawGrid();
 };
+
+var drawGrid = function () {
+    ctx.fillStyle = "Black";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    // vertical
+    for (var i = blockSize * 2; i < width - blockSize; i+=blockSize) {
+        ctx.moveTo(i, blockSize);
+        ctx.lineTo(i, height - blockSize);
+    }
+    // horizontal
+    for (var i = blockSize * 2; i < height - blockSize; i+=blockSize) {
+        ctx.moveTo(blockSize, i);
+        ctx.lineTo(width - blockSize, i);
+    }
+    ctx.stroke();
+};
+
 // Draw the score in the top-left corner
 var drawScore = function () {
     ctx.font = "20px Courier";
